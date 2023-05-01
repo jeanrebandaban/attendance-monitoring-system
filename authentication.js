@@ -10,27 +10,25 @@ function getLoggedInUser(){
   function deleteSession(){
     localStorage.removeItem('loggedInUser');
   }
-  document.getElementById("loginForm").addEventListener("submit", login);
   function login(e){
     e.preventDefault();
 
     var email = document.forms["loginForm"]["loginValue"].value;
     var pass = document.forms["loginForm"]["loginPass"].value;
 
-    if(email == "admin@gmail.com" ) {
-      if(pass == "admin") {
-        window.location.href = "admin/index.html"
-      }
-
+    if(email == "admin@gmail.com" && pass == "admin") {
+      var user = {
+        "appType": "admin"
+      };
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+      window.location.href = "admin/index.html";
     }
 
-    var isLoggedIn = false;
     usersDB.on('value', (snapshot) => {
       var users = snapshot.val();
       for (const property in users) {
         if (email == users[property]["email"]){
           if (pass == users[property]["pass"]){
-            isLoggedIn = true;
             localStorage.setItem('loggedInUser', JSON.stringify(users[property]));
             var loggedInUser = users[property];
             if (loggedInUser["appType"] == "teacher"){
@@ -43,12 +41,7 @@ function getLoggedInUser(){
           }
         }
         
-        if(email == "admin@gmail.com" ) {
-          if(pass == "admin") {
-            window.location.href = "admin/index.html"
-          }
-
-        }
+        
       }
       alert("Invalid user.");
       document.getElementById("loginForm").reset();

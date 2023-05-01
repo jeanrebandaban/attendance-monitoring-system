@@ -38,5 +38,13 @@ $(document).ready(function(){
 
 
 function logout() {
+	deleteSession();
+	window.location.href = "../registration.html";
+  }
+
+  var user = getLoggedInUser();
+
+  if (user["appType"] != "admin") {
+	alert("You must login to access this page.");
 	window.location.href = "../registration.html";
   }

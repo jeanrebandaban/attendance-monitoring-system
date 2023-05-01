@@ -90,8 +90,7 @@
                                             </div>
 
                                             <!-- Submit button --><br>
-                                            <button type="submit"
-                                                class="reg_btn btn btn-primary btn-block mb-3">Sign
+                                            <button type="submit" class="reg_btn btn btn-primary btn-block mb-3">Sign
                                                 in</button>
                                         </form>
                                     </div>
@@ -134,8 +133,8 @@
                                                 <label class="form-label" for="registerEmail">Email</label>
                                             </div>
                                             <div class="form-outline mb-4">
-                                                <input type="tel" id="typePhone" name="regContact" class="form-control"
-                                                     />
+                                                <input type="tel" id="typePhone" name="regContact"
+                                                    class="form-control" />
                                                 <label class="form-label" for="typePhone">Contact Number</label>
                                             </div>
 
@@ -143,15 +142,14 @@
                                             <!-- Password input -->
                                             <div class="form-outline mb-4">
                                                 <input type="password" id="registerPassword"
-                                                    class="form-control reg_input" name="regPass" 
-                                                    required />
+                                                    class="form-control reg_input" name="regPass" required />
                                                 <label class="form-label" for="registerPassword">Password</label>
                                             </div>
 
                                             <!-- Repeat Password input -->
                                             <div class="form-outline mb-4">
                                                 <input type="password" id="registerRepeatPassword" name="regPass2"
-                                                    class="form-control"  required />
+                                                    class="form-control" required />
                                                 <label class="form-label" for="registerRepeatPassword">Repeat
                                                     password</label>
                                             </div>
@@ -281,10 +279,6 @@
             </div>
         </div>
     </div>
-
-
-
-
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
@@ -293,6 +287,19 @@
     <script type="text/javascript" src="firebaseInit.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="authentication.js"></script>
+
+    <script>
+    
+         document.getElementById("loginForm").addEventListener("submit", login);
+        var user = getLoggedInUser();
+        if (user != null) {
+        if (user["appType"] == "teacher") {
+            window.location.href = "teacher/profile.html";
+        } if (user["appType"] == "student") {
+            window.location.href = "student/profileonly.html";
+        }
+        }
+    </script>
 </body>
 
 </html>
