@@ -19,7 +19,7 @@ function getLoggedInUser(){
 
     if(email == "admin@gmail.com" ) {
       if(pass == "admin") {
-        window.location.href = "/admin/"
+        window.location.href = "admin/index.html"
       }
 
     }
@@ -34,13 +34,20 @@ function getLoggedInUser(){
             localStorage.setItem('loggedInUser', JSON.stringify(users[property]));
             var loggedInUser = users[property];
             if (loggedInUser["appType"] == "teacher"){
-              window.location.href = "/teacher/profile.html" 
+              window.location.href = "teacher/profile.html" 
             }
             if (loggedInUser["appType"] == "student"){
-              window.location.href = "/student/profileonly.html" 
+              window.location.href = "student/profileonly.html" 
             }
             return;
           }
+        }
+        
+        if(email == "admin@gmail.com" ) {
+          if(pass == "admin") {
+            window.location.href = "admin/index.html"
+          }
+
         }
       }
       alert("Invalid user.");
