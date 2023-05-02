@@ -166,7 +166,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark font-italic" id="logout-link" onclick = "logout()">
+        <a class="nav-link text-danger font-italic" id="logout-link">
           <i class="fa fa-sign-out mr-3 text-primary fa-fw"></i>
           Logout
         </a>
@@ -283,11 +283,6 @@
     document.getElementById("email").placeholder = email;
     document.getElementById("bday").placeholder = bday;
     document.getElementById("gender").placeholder = gender;
-
-    function logout() {
-      deleteSession();
-      window.location.href = "../registration.html";
-    }
   </script>
 </body>
 

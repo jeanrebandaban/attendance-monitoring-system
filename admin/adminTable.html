@@ -16,7 +16,7 @@
       <div class="media d-flex align-items-center"><img src="profile.png" alt="..." width="65"
           class="mr-3 rounded-circle img-thumbnail shadow-sm">
         <div class="media-body">
-          <h4 class="m-0">Jason Doe</h4>
+          <h4 class="m-0">Admin</h4>
           <p class="font-weight-light text-muted mb-0">Admin</p>
         </div>
       </div>
@@ -32,7 +32,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="adminTable.html" class="nav-link text-dark">
+        <a href="adminTable.html" class="nav-link text-dark font-italic bg-light">
           <i class="fa fa-users mr-3 text-primary fa-fw"></i>
           Admin Table
         </a>
@@ -44,10 +44,16 @@
                     </a>
             </li> -->
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a href="password.html" class="nav-link text-dark">
           <i class="fa fa-unlock-alt mr-3 text-primary fa-fw"></i>
           Edit Password
+        </a>
+      </li> -->
+      <li class="nav-item">
+        <a href="attendance.html" class="nav-link text-dark">
+          <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
+          Attendance Record
         </a>
       </li>
       <li class="nav-item">
@@ -57,7 +63,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-danger" id="logout-link" onclick="logout()">
+        <a class="nav-link text-danger" id="logout-link">
           <i class="fa fa-sign-out mr-3 text-primary fa-fw"></i>
           Logout
         </a>
@@ -90,7 +96,7 @@
               </div>
             </div>
           </div>
-          <table class="table table-striped table-hover">
+          <table class="table table-striped table-hover" id="table">
             <thead>
               <tr>
                 <th>
@@ -99,105 +105,13 @@
                     <label for="selectAll"></label>
                   </span>
                 </th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Phone</th>
+                <th data-field="fullName">Name</th>
+                <th data-field="studentNo">Student Number</th>
+                <th data-field="email">Email</th>
+                <th data-field="contactNo">Contact Number</th>
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <span class="custom-checkbox">
-                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                    <label for="checkbox1"></label>
-                  </span>
-                </td>
-                <td>Thomas Hardy</td>
-                <td>thomashardy@mail.com</td>
-                <td>89 Chiaroscuro Rd, Portland, USA</td>
-                <td>(171) 555-2222</td>
-                <td>
-                  <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="custom-checkbox">
-                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                    <label for="checkbox2"></label>
-                  </span>
-                </td>
-                <td>Dominique Perrier</td>
-                <td>dominiqueperrier@mail.com</td>
-                <td>Obere Str. 57, Berlin, Germany</td>
-                <td>(313) 555-5735</td>
-                <td>
-                  <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="custom-checkbox">
-                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                    <label for="checkbox3"></label>
-                  </span>
-                </td>
-                <td>Maria Anders</td>
-                <td>mariaanders@mail.com</td>
-                <td>25, rue Lauriston, Paris, France</td>
-                <td>(503) 555-9931</td>
-                <td>
-                  <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="custom-checkbox">
-                    <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                    <label for="checkbox4"></label>
-                  </span>
-                </td>
-                <td>Fran Wilson</td>
-                <td>franwilson@mail.com</td>
-                <td>C/ Araquil, 67, Madrid, Spain</td>
-                <td>(204) 619-5731</td>
-                <td>
-                  <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="custom-checkbox">
-                    <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                    <label for="checkbox5"></label>
-                  </span>
-                </td>
-                <td>Martin Blank</td>
-                <td>martinblank@mail.com</td>
-                <td>Via Monte Bianco 34, Turin, Italy</td>
-                <td>(480) 631-2097</td>
-                <td>
-                  <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                      data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                </td>
-              </tr>
-            </tbody>
           </table>
           <div class="clearfix">
             <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
@@ -205,7 +119,7 @@
               <li class="page-item disabled"><a href="#">Previous</a></li>
               <li class="page-item"><a href="#" class="page-link">1</a></li>
               <li class="page-item"><a href="#" class="page-link">2</a></li>
-              <li class="page-item active"><a href="#" class="page-link">3</a></li>
+              <li class="page-item"><a href="#" class="page-link">3</a></li>
               <li class="page-item"><a href="#" class="page-link">4</a></li>
               <li class="page-item"><a href="#" class="page-link">5</a></li>
               <li class="page-item"><a href="#" class="page-link">Next</a></li>
@@ -311,9 +225,39 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
   <!-- JS -->
   <script type="text/javascript" src="../firebaseInit.js"></script>
   <script type="text/javascript" src="../authentication.js"></script>
   <script src="javascript.js"></script>
+  <script>
+     function populateTable() {
+      var data = [];
+
+      var $table = $('#table')
+      usersDB.once('value', (snapshot) => {
+        var users = snapshot.val();
+        for (const property in users) {
+
+          if (users[property]["appType"] == "teacher") {
+            var user = {
+              fullName: users[property]["firstName"] + " " + users[property]["lastName"],
+              studentNo: "123456",
+              email: users[property]["email"],
+              contactNo: users[property]["contactNo"],
+            }
+            data.push(user);
+          }
+        }
+
+        $table.bootstrapTable({ data: data });
+
+      }, (errorObject) => {
+        console.log('The read failed: ' + errorObject.name);
+      });
+    }
+
+    populateTable();
+  </script>
 
 </html>

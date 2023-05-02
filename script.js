@@ -43,6 +43,11 @@ function submitForm(e) {
     return false;
   }
 
+  if (pass.length < 6){
+    alert("Password must be at least 6 characters long. Please choose a longer password.")
+    return false;
+  }
+
 
   saveMessages(appType, firstName, lastName, email, contactNo, pass, pass2, bday, gender, yearLevel, program);
 
@@ -82,38 +87,39 @@ const studentFields = document.querySelector('#student-fields');
 
 // Show/hide student fields when user type is changed
 userTypeRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-        if (radio.value === 'teacher') {
-            studentFields.style.display = 'none';
-        } else {
-            studentFields.style.display = 'block';
-        }
-    });
+  radio.addEventListener('change', () => {
+    if (radio.value === 'teacher') {
+      studentFields.style.display = 'none';
+    } else {
+      studentFields.style.display = 'block';
+    }
+  });
 });
 function setYear(year) {
-    var yearInput = document.getElementById("year_input");
-    yearInput.value = year;
-    var yearLabel = document.getElementById("yearLabel" + year).innerHTML;
-    var button = document.getElementById("yearLevelLabel");
-    button.innerHTML = yearLabel;
+  var yearInput = document.getElementById("year_input");
+  yearInput.value = year;
+  var yearLabel = document.getElementById("yearLabel" + year).innerHTML;
+  var button = document.getElementById("yearLevelLabel");
+  button.innerHTML = yearLabel;
 }
 
 function setProgram(prog) {
-    var progInput = document.getElementById("prog_input");
-    progInput.value = prog;
-    var button = document.getElementById("programLabel");
-    button.innerHTML = prog;
+  var progInput = document.getElementById("prog_input");
+  progInput.value = prog;
+  var button = document.getElementById("programLabel");
+  button.innerHTML = prog;
 }
 
 function validateForm() {
-    var user = document.forms["registrationForm"]["user-type"].value;
+  var user = document.forms["registrationForm"]["user-type"].value;
 
-    if(user == "student") {
-        let x = document.forms["registrationForm"]["year"].value;
+  if (user == "student") {
+    let x = document.forms["registrationForm"]["year"].value;
     if (x == "") {
-        alert("Year must be filled out");
-        return false;
+      alert("Year must be filled out");
+      return false;
     }
-    }
+  }
 
 }
+

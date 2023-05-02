@@ -1,269 +1,289 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-    
+  <style>
     .vertical-nav {
-  min-width: 17rem;
-  width: 17rem;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s;
-}
+      min-width: 17rem;
+      width: 17rem;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s;
+    }
 
-img{
-  padding-right:10px ;
-}
+    img {
+      padding-right: 10px;
+    }
 
-.page-content {
-  width: calc(100% - 17rem);
-  margin-left: 17rem;
-  transition: all 0.4s;
-}
+    .page-content {
+      width: calc(100% - 17rem);
+      margin-left: 17rem;
+      transition: all 0.4s;
+    }
 
-/* for toggle behavior */
+    /* for toggle behavior */
 
-#sidebar.active {
-  margin-left: -17rem;
-}
+    #sidebar.active {
+      margin-left: -17rem;
+    }
 
-#content.active {
-  width: 100%;
-  margin: 0;
-}
+    #content.active {
+      width: 100%;
+      margin: 0;
+    }
 
-@media (max-width: 768px) {
-  #sidebar {
-    margin-left: -17rem;
-  }
-  #sidebar.active {
-    margin-left: 0;
-  }
-  #content {
-    width: 100%;
-    margin: 0;
-  }
-  #content.active {
-    margin-left: 17rem;
-    width: calc(100% - 17rem);
-  }
-}
+    @media (max-width: 768px) {
+      #sidebar {
+        margin-left: -17rem;
+      }
 
-body {
-  background: #599fd9;
-  background: -webkit-linear-gradient(to right, #9da5dd, #1d2b8b, #341f6f);
-  background: linear-gradient(to right, #9da5dd, #1d2b8b, #341f6f);
-  min-height: 100vh;
-  overflow-x: hidden;
-  
-  font-family: Georgia;
-}
+      #sidebar.active {
+        margin-left: 0;
+      }
+
+      #content {
+        width: 100%;
+        margin: 0;
+      }
+
+      #content.active {
+        margin-left: 17rem;
+        width: calc(100% - 17rem);
+      }
+    }
+
+    body {
+      background: #599fd9;
+      background: -webkit-linear-gradient(to right, #9da5dd, #1d2b8b, #341f6f);
+      background: linear-gradient(to right, #9da5dd, #1d2b8b, #341f6f);
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      font-family: Georgia;
+    }
 
 
-.text-uppercase {
-  letter-spacing: 0.1em;
-}
+    .text-uppercase {
+      letter-spacing: 0.1em;
+    }
 
-.text-gray {
-  color: #aaa;
-}
+    .text-gray {
+      color: #aaa;
+    }
 
-.form-control:focus {
-    box-shadow: none;
-    border-color: #341f6f
-}
-.profile-button {
-    background: #341f6f;
-    box-shadow: none;
-    border: none
-}
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #341f6f
+    }
 
-.profile-button:hover {
-    background: #3B71CA
-}
+    .profile-button {
+      background: #341f6f;
+      box-shadow: none;
+      border: none
+    }
 
-.profile-button:focus {
-    background: #3B71CA;
-    box-shadow: none
-}
+    .profile-button:hover {
+      background: #3B71CA
+    }
 
-.profile-button:active {
-    background: #341f6f;
-    box-shadow: none
-}
+    .profile-button:focus {
+      background: #3B71CA;
+      box-shadow: none
+    }
 
-.back:hover {
-    color: #341f6f;
-    cursor: pointer
-}
+    .profile-button:active {
+      background: #341f6f;
+      box-shadow: none
+    }
 
-.labels {
-    font-size: 11px
-}
+    .back:hover {
+      color: #341f6f;
+      cursor: pointer
+    }
 
-.add-experience:hover {
-    background: #341f6f;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #341f6f
-}
+    .labels {
+      font-size: 11px
+    }
 
-button{
-    width: 200px;
-}
+    .add-experience:hover {
+      background: #341f6f;
+      color: #fff;
+      cursor: pointer;
+      border: solid 1px #341f6f
+    }
 
-</style>
+    button {
+      width: 200px;
+    }
+    .logo {
+      display: block;
+      margin-left: 32%;
+      margin-right: 25%;
+      width: 50%;
+      align-items: end;
+      padding-top: 80%;
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="vertical-nav bg-white" id="sidebar">
-        <div class="py-4 px-3 mb-4 bg-light">
-          <div class="media d-flex align-items-center"><img src="profile.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-            <div class="media-body">
-              <h4 class="m-0" id="studName">Jason Doe</h4>
-              <p class="font-weight-light text-muted mb-0">Student</p>
-            </div>
-          </div>
+  <div class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+      <div class="media d-flex align-items-center"><img src="profile.png" alt="..." width="65"
+          class="mr-3 rounded-circle img-thumbnail shadow-sm">
+        <div class="media-body">
+          <h4 class="m-0" id="studName">Jason Doe</h4>
+          <p class="font-weight-light text-muted mb-0">Student</p>
         </div>
-          
-            <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
-          
-            <ul class="nav flex-column bg-white mb-0">
-                <li class="nav-item">
-                  <a href="profileonly.html" class="nav-link text-dark font-italic bg-light">
-                            <i class="fa fa-users mr-3 text-primary fa-fw"></i>
-                            Profile
-                        </a>
-                </li>
-                <li class="nav-item">
-                  <a href="password.html" class="nav-link text-dark font-italic">
-                            <i class="fa fa-unlock-alt mr-3 text-primary fa-fw"></i>
-                            Password
-                        </a>
-                </li>
-                <li class="nav-item">
-                  <a href="attendance.html" class="nav-link text-dark font-italic">
-                            <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
-                            Attendance Record
-                        </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-dark font-italic" id="logout-link" onclick = "logout()">
-                            <i class="fa fa-sign-out mr-3 text-primary fa-fw"></i>
-                            Logout
-                        </a>
-                </li>
-              </ul>
-          </div>
+      </div>
+    </div>
 
-          <div class="page-content p-5" id="content">
-            <button type = "button" class = "btn btn-dark" id="profile-button">Profile</button>
-            <button type = "button" class = "btn btn-dark" id="edit-profile-button">Edit Profile</button>
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+
+    <ul class="nav flex-column bg-white mb-0">
+      <li class="nav-item">
+        <a href="profileonly.html" class="nav-link text-dark font-italic bg-light">
+          <i class="fa fa-users mr-3 text-primary fa-fw"></i>
+          Profile
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="password.html" class="nav-link text-dark font-italic">
+          <i class="fa fa-unlock-alt mr-3 text-primary fa-fw"></i>
+          Password
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="attendance.html" class="nav-link text-dark font-italic">
+          <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
+          Attendance Record
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-danger font-italic" id="logout-link">
+          <i class="fa fa-sign-out mr-3 text-primary fa-fw"></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+    <div class="logo"><img src="qa_logo.png" alt="..." class="center" width="100">
+    </div>
+  </div>
+
+  <div class="page-content p-5" id="content">
+    <button type="button" class="btn btn-dark" id="profile-button">Profile</button>
+    <button type="button" class="btn btn-dark" id="edit-profile-button">Edit Profile</button>
     <div class="container rounded bg-white mt-5 mb-5">
-        <div class="row">
-            <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    
-                    <h1>Upload an Image</h1>
-<form action="upload.php" method="post" enctype="multipart/form-data">
-  <input type="file" id="image" name="image" style="padding-left: 70px;">
-  <label for="image" style="display:none;">Choose a file</label> <!-- Add this line to hide the "No file chosen" text -->
-  <br><br>
-  <img id="image-preview" src="https://via.placeholder.com/150" alt="Preview Image" width="150">
-  <br><br>
-</form>
-</div>
-            </div>
-            <div class="col-md-5 border-right">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                        <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Contact Number</label><input type="text" class="form-control" placeholder="enter contact number" value=""></div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-md-6"><label class="labels">Birtdate</label><input type="text" class="form-control" placeholder="birthdate" value=""></div>
-                      <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" value="" placeholder="gender"></div>
-                  </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Year Level</label><input type="text" class="form-control" placeholder="year level" value=""></div>
-                        <div class="col-md-6"><label class="labels">Program</label><input type="text" class="form-control" value="" placeholder="program"></div>
-                    </div>
-                   
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-md-3 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+
+            <h1>Upload an Image</h1>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+              <input type="file" id="image" name="image" style="padding-left: 70px;">
+              <label for="image" style="display:none;">Choose a file</label>
+              <!-- Add this line to hide the "No file chosen" text -->
+              <br><br>
+              <img id="image-preview" src="https://via.placeholder.com/150" alt="Preview Image" width="150">
+              <br><br>
+            </form>
+          </div>
         </div>
-    </div>
-    </div>
-    </div>
-</div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-      
-      <script>
-        var profileButton = document.getElementById("profile-button");
-        var editProfileButton = document.getElementById("edit-profile-button");
-      
-        profileButton.addEventListener("click", function() {
-          window.location.href = "profileonly.html";
-        });
-      
-        editProfileButton.addEventListener("click", function() {
-          window.location.href = "pro.html";
-        });
+        <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right">Profile Settings</h4>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control"
+                  placeholder="first name" value=""></div>
+              <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control"
+                  value="" placeholder="surname"></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12"><label class="labels">Contact Number</label><input type="text" class="form-control"
+                  placeholder="enter contact number" value=""></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control"
+                  placeholder="enter email id" value=""></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6"><label class="labels">Birtdate</label><input type="text" class="form-control"
+                  placeholder="birthdate" value=""></div>
+              <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" value=""
+                  placeholder="gender"></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6"><label class="labels">Year Level</label><input type="text" class="form-control"
+                  placeholder="year level" value=""></div>
+              <div class="col-md-6"><label class="labels">Program</label><input type="text" class="form-control"
+                  value="" placeholder="program"></div>
+            </div>
 
-        const input = document.getElementById('image');
-      const preview = document.getElementById('image-preview');
-      
-      input.addEventListener('change', () => {
-        const file = input.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.addEventListener('load', () => {
-            preview.src = reader.result;
-          });
-          reader.readAsDataURL(file);
-        }
-      });
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save
+                Profile</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
-      </script>
-      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
-      <!-- JS -->
-      <script type="text/javascript" src="../firebaseInit.js"></script>
-      <script type="text/javascript" src="../authentication.js"></script>
-      <script>
-       var user = getLoggedInUser();
-         if (user == null || user["appType"] != "student") {
-          alert("You must login to access this page.");
-          window.location.href = "../registration.html";
-        }
-        var firstName = user['firstName'];
-        document.getElementById('studName').innerHTML = firstName;
-    
-        function logout(){
-          deleteSession();
-          window.location.href = "../registration.html";
-        }
-      </script>
+  <script>
+    var profileButton = document.getElementById("profile-button");
+    var editProfileButton = document.getElementById("edit-profile-button");
+
+    profileButton.addEventListener("click", function () {
+      window.location.href = "profileonly.html";
+    });
+
+    editProfileButton.addEventListener("click", function () {
+      window.location.href = "pro.html";
+    });
+
+    const input = document.getElementById('image');
+    const preview = document.getElementById('image-preview');
+
+    input.addEventListener('change', () => {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          preview.src = reader.result;
+        });
+        reader.readAsDataURL(file);
+      }
+    });
+
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+  <script src="javascript.js"></script>
+  <!-- JS -->
+  <script type="text/javascript" src="../firebaseInit.js"></script>
+  <script type="text/javascript" src="../authentication.js"></script>
+  <script>
+    var user = getLoggedInUser();
+    if (user == null || user["appType"] != "student") {
+      alert("You must login to access this page.");
+      window.location.href = "../registration.html";
+    }
+    var firstName = user['firstName'];
+    document.getElementById('studName').innerHTML = firstName;
+  </script>
 </body>
+
 </html>

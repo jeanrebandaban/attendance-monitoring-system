@@ -66,7 +66,7 @@
       background: linear-gradient(to right, #9da5dd, #1d2b8b, #341f6f);
       min-height: 100vh;
       overflow-x: hidden;
-      
+
       font-family: Georgia;
     }
 
@@ -123,6 +123,15 @@
     button {
       width: 200px;
     }
+    
+    .logo {
+      display: block;
+      margin-left: 32%;
+      margin-right: 25%;
+      width: 50%;
+      align-items: end;
+      padding-top: 80%;
+    }
   </style>
 </head>
 
@@ -163,12 +172,14 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark font-italic" id="logout-link" onclick = "logout()">
+        <a class="nav-link text-danger font-italic" id="logout-link">
           <i class="fa fa-sign-out mr-3 text-primary fa-fw"></i>
           Logout
         </a>
-      </li>
+      </li>a
     </ul>
+    <div class="logo"><img src="qa_logo.png" alt="..." class="center" width="100">
+    </div>
   </div>
 
 
@@ -192,24 +203,32 @@
               <h4 class="text-right">Profile Settings</h4>
             </div>
             <div class="row mt-2">
-              <div class="col-md-6"><label class="labels">Name</label><input type="text" id="name" class="form-control" placeholder="first name" value="" readonly></div>
-              <div class="col-md-6"><label class="labels">Surname</label><input type="text" id="sname" class="form-control" value="" placeholder="surname" readonly></div>
-          </div>
-          <div class="row mt-3">
-              <div class="col-md-12"><label class="labels">Contact Number</label><input type="text" id="contact" class="form-control" placeholder="enter contact number" value="" readonly ></div>
-             
-          </div>
-          <div class="row mt-3">
-            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" id="email" placeholder="enter email" value="" readonly></div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-md-6"><label class="labels">Birtdate</label><input type="text" class="form-control" id="bday" placeholder="birthdate" value="" readonly></div>
-            <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" id="gender" value="" placeholder="gender" readonly></div>
-        </div>
-          <div class="row mt-3">
-              <div class="col-md-6"><label class="labels">Year Level</label><input type="text" class="form-control" id="year" placeholder="year level" value="" readonly></div>
-              <div class="col-md-6"><label class="labels">Program</label><input type="text" class="form-control" id="program" value="" placeholder="program" readonly></div>
-          </div>
+              <div class="col-md-6"><label class="labels">Name</label><input type="text" id="name" class="form-control"
+                  placeholder="first name" value="" readonly></div>
+              <div class="col-md-6"><label class="labels">Surname</label><input type="text" id="sname"
+                  class="form-control" value="" placeholder="surname" readonly></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12"><label class="labels">Contact Number</label><input type="text" id="contact"
+                  class="form-control" placeholder="enter contact number" value="" readonly></div>
+
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control"
+                  id="email" placeholder="enter email" value="" readonly></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6"><label class="labels">Birtdate</label><input type="text" class="form-control"
+                  id="bday" placeholder="birthdate" value="" readonly></div>
+              <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control"
+                  id="gender" value="" placeholder="gender" readonly></div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6"><label class="labels">Year Level</label><input type="text" class="form-control"
+                  id="year" placeholder="year level" value="" readonly></div>
+              <div class="col-md-6"><label class="labels">Program</label><input type="text" class="form-control"
+                  id="program" value="" placeholder="program" readonly></div>
+            </div>
             <div class="mt-5 text-center"></div>
           </div>
         </div>
@@ -270,10 +289,10 @@
     var gender = user['gender'];
     var yearLevel = user['yearLevel'];
     var program = user['program'];
-    
+
     document.getElementById('studName').innerHTML = firstName;
 
-    
+
     document.getElementById("sname").placeholder = lastName;
     document.getElementById("name").placeholder = firstName;
     document.getElementById("contact").placeholder = contactNo;
@@ -282,12 +301,7 @@
     document.getElementById("gender").placeholder = gender;
     document.getElementById("year").placeholder = yearLevel;
     document.getElementById("program").placeholder = program;
-    
 
-    function logout() {
-      deleteSession();
-      window.location.href = "../registration.html";
-    }
   </script>
 </body>
 
