@@ -200,29 +200,33 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h4 class="text-right">Profile Settings</h4>
             </div>
-            <div class="row mt-2">
-              <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control"
-                  placeholder="first name" value=""></div>
-              <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control"
-                  value="" placeholder="surname"></div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-12"><label class="labels">Contact Number</label><input type="text" class="form-control"
-                  placeholder="enter contact number" value=""></div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control"
-                  placeholder="enter email id" value=""></div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-6"><label class="labels">Birtdate</label><input type="text" class="form-control"
-                  placeholder="birthdate" value=""></div>
-              <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" value=""
-                  placeholder="gender"></div>
-            </div>
+            <form id=updateProfileForm>
+              <div class="row mt-2">
+                <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control"
+                    placeholder="first name" value="" id="updateName" required></div>
+                <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control"
+                    value="" placeholder="surname" id="updateSname" required></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Contact Number</label><input type="text"
+                    class="form-control" placeholder="enter contact number" value="" id="updateContactNo" required>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control"
+                    placeholder="enter email" value="" id="updateEmail" required></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6"><label class="labels">Birtdate <br> Format: (yyyy-mm-dd)</label><input type="text" class="form-control"
+                    placeholder="birthdate" value="" id="updateBirthdate" required></div>
+                <div class="col-md-6"><label class="labels"><br>Gender</label><input type="text" class="form-control"
+                    value="" placeholder="gender" id="updateGender" required></div>
+              </div>
 
-            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save
-                Profile</button></div>
+              <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save
+                  Profile</button></div>
+            </form>
+
           </div>
         </div>
         <div class="col-md-4">
@@ -286,6 +290,45 @@
     }
     var firstName = user['firstName'];
     document.getElementById('teacherName').innerHTML = firstName;
+
+    document.getElementById("updateProfileForm").addEventListener("submit", updateProfile);
+    function updateProfile(e) {
+      e.preventDefault();
+      var name = document.getElementById('updateName').value;
+      var sName = document.getElementById('updateSname').value;
+      var contact = document.getElementById('updateContactNo').value;
+      var email = document.getElementById('updateEmail').value;
+      var gender = document.getElementById('updateGender').value;
+      var bday = document.getElementById('updateBirthdate').value;
+      var userId = getLoggedInUser()["userId"];
+      var profileToUpdate = firebase.database().ref("registrationForm/" + userId);
+
+      profileToUpdate.update({
+        bday: bday,
+        contactNo: contact,
+        email: email,
+        gender: gender,
+        firstName: name,
+        lastName: sName,
+
+      }).then(() => {
+        alert("Your profile information has been updated successfully!");
+        location.reload();
+        console.log("success");
+
+        var loggedInUser = getLoggedInUser();
+        loggedInUser.bday = bday,
+          loggedInUser.contactNo = contact,
+          loggedInUser.email = email,
+          loggedInUser.gender = gender,
+          loggedInUser.firstName = name,
+          loggedInUser.lastName = sName,
+
+          localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+      }).catch(() => {
+        alert("failed");
+      })
+    }
   </script>
 </body>
 

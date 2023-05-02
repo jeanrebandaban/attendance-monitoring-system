@@ -188,8 +188,8 @@
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
 
             <img src="profile.png" class="img-thumbnail" alt="...">
-            <h1>Name</h1>
-            <h6>id</h6>
+            <h2 id = "tName">Name</h2>
+            <h6 id = "t-Id">id</h6>
           </div>
         </div>
         <div class="col-md-5 border-right">
@@ -284,6 +284,7 @@
     var gender = user['gender'];
 
     document.getElementById('teacherName').innerHTML = firstName;
+    document.getElementById('tName').innerHTML = firstName + " " + lastName;
 
 
     document.getElementById("sname").placeholder = lastName;

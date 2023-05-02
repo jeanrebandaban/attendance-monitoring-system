@@ -35,6 +35,7 @@ function login(e) {
           document.getElementById("loginForm").reset();
           return;
         }
+        users[property]["userId"] = property;
         localStorage.setItem('loggedInUser', JSON.stringify(users[property]));
         var loggedInUser = users[property];
         if (loggedInUser["appType"] == "teacher") {
