@@ -15,6 +15,8 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 
+//registration
+
 const registration = "registrationForm";
 // reference your database
 var regFormDB = firebase.database().ref(registration);
