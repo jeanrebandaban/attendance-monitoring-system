@@ -43,7 +43,7 @@ function submitForm(e) {
     return false;
   }
 
-  if (pass.length < 6){
+  if (pass.length < 6) {
     alert("Password must be at least 6 characters long. Please choose a longer password.")
     return false;
   }

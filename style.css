@@ -10,7 +10,7 @@
         width: 100%;
         background-color: #341f6f;
         /* For browsers that do not support gradients */
-        background-image: linear-gradient(to left,#9da5dd, #1d2b8b, #341f6f);
+        background-image: linear-gradient(to left, #9da5dd, #1d2b8b, #341f6f);
     }
 
     .index_row {
@@ -35,7 +35,7 @@
         height: 50%;
         background-color: #341f6f;
         /* For browsers that do not support gradients */
-        background-image: linear-gradient(to left,#9da5dd, #1d2b8b, #341f6f);
+        background-image: linear-gradient(to left, #9da5dd, #1d2b8b, #341f6f);
         color: aliceblue !important;
         letter-spacing: 2px;
     }
@@ -120,7 +120,7 @@
         padding-top: 5%;
     }
 
-    .reg_body{
+    .reg_body {
         font-size: medium;
         color: black !important;
 

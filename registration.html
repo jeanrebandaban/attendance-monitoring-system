@@ -133,8 +133,8 @@
                                                 <label class="form-label" for="registerEmail">Email</label>
                                             </div>
                                             <div class="form-outline mb-4">
-                                                <input type="tel" id="typePhone" name="regContact"
-                                                    class="form-control" required/>
+                                                <input type="tel" id="typePhone" name="regContact" class="form-control"
+                                                    required />
                                                 <label class="form-label" for="typePhone">Contact Number</label>
                                             </div>
 
@@ -252,8 +252,8 @@
                                                 <div class="mt-2 pt-2">
                                                     <button class="btn btn-primary btn-block reg_btn" type="submit"
                                                         value="Submit">Submit</button>
-                                                    <button class="btn btn-secondary btn-block mt-3" style="font-size: 15px;"
-                                                        type="reset"
+                                                    <button class="btn btn-secondary btn-block mt-3"
+                                                        style="font-size: 15px;" type="reset"
                                                         value="reset">Clear</button>
                                                 </div>
 
@@ -289,15 +289,15 @@
     <script type="text/javascript" src="authentication.js"></script>
 
     <script>
-    
-         document.getElementById("loginForm").addEventListener("submit", login);
+
+        document.getElementById("loginForm").addEventListener("submit", login);
         var user = getLoggedInUser();
         if (user != null) {
-        if (user["appType"] == "teacher") {
-            window.location.href = "teacher/profile.html";
-        } if (user["appType"] == "student") {
-            window.location.href = "student/profileonly.html";
-        }
+            if (user["appType"] == "teacher") {
+                window.location.href = "teacher/profile.html";
+            } if (user["appType"] == "student") {
+                window.location.href = "student/profileonly.html";
+            }
         }
     </script>
 </body>
