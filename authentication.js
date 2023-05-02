@@ -27,21 +27,24 @@ function getLoggedInUser(){
     usersDB.on('value', (snapshot) => {
       var users = snapshot.val();
       for (const property in users) {
-        if (email == users[property]["email"]){
-          if (pass == users[property]["pass"]){
-            localStorage.setItem('loggedInUser', JSON.stringify(users[property]));
-            var loggedInUser = users[property];
-            if (loggedInUser["appType"] == "teacher"){
-              window.location.href = "teacher/profile.html" 
-            }
-            if (loggedInUser["appType"] == "student"){
-              window.location.href = "student/profileonly.html" 
-            }
+        if (email == users[property]["email"] && pass == users[property]["pass"]) {
+
+          var active = users[property]["active"];
+          if (active == null || active == false) {
+            alert("Your account is not yet activated. Please wait for the admin to activate your account.");
+            document.getElementById("loginForm").reset();
             return;
           }
+          localStorage.setItem('loggedInUser', JSON.stringify(users[property]));
+          var loggedInUser = users[property];
+          if (loggedInUser["appType"] == "teacher") {
+            window.location.href = "teacher/profile.html"
+          }
+          if (loggedInUser["appType"] == "student") {
+            window.location.href = "student/profileonly.html"
+          }
+          return;
         }
-        
-        
       }
       alert("Invalid user.");
       document.getElementById("loginForm").reset();

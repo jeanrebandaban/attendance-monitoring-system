@@ -55,7 +55,7 @@ function submitForm(e) {
   //   reset the form
 
   document.getElementById("registrationForm").reset();
-  $('.modal-body').html("Your account has been created.");
+  $('.modal-body').html("Your account has been registered successfully. However, it needs to be activated by an administrator before you can log in. Please wait for the administrator to activate your account. You will receive an email notification once your account has been activated. Thank you for your patience.");
 
   $('#exampleModal').modal('show');
 }
