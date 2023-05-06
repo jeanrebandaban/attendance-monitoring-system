@@ -22,6 +22,7 @@ function login(e) {
     };
     localStorage.setItem('loggedInUser', JSON.stringify(user));
     window.location.href = "admin/index.html";
+    return;
   }
 
   usersDB.on('value', (snapshot) => {
@@ -30,7 +31,7 @@ function login(e) {
       if (email == users[property]["email"] && pass == users[property]["pass"]) {
 
         var active = users[property]["active"];
-        if (active == null || active == false) {
+        if (active == null || active == "false") {
           alert("Your account is not yet activated. Please wait for the admin to activate your account.");
           document.getElementById("loginForm").reset();
           return;

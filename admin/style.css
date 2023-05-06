@@ -426,3 +426,12 @@ table.table .avatar {
 	align-items: end;
 	padding-top: 80%;
 }
+
+.edit {
+	width: 100%;
+}
+
+.delete {
+	margin-top: 10%;
+	width: 100%;
+}
