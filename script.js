@@ -1,19 +1,3 @@
-function updateClock() {
-  let now = new Date();
-  let day = now.toLocaleDateString("en-US", { weekday: "long" });
-  let date = now.toLocaleDateString();
-  let time = now.toLocaleTimeString();
-  let clock = document.getElementById("clock");
-  if (clock) {
-    clock.innerText = time;
-  }
-  let dateElement = document.getElementById("date");
-  if (dateElement) {
-    dateElement.innerText = `${day}, ${date}`;
-  }
-}
-
-setInterval(updateClock, 1000);
 
 //registration
 

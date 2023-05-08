@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Teacher Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
@@ -140,12 +140,18 @@
           Password
         </a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a href="attendance.html" class="nav-link text-dark font-italic">
           <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
           Attendance Record
         </a>
-      </li>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a href="qr-generator.html" class="nav-link text-dark font-italic">
+          <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
+          QR Code
+        </a>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link text-danger font-italic" id="logout-link">
           <i class="fa fa-sign-out mr-3 text-primary fa-fw"></i>
@@ -217,7 +223,8 @@
       window.location.href = "../registration.html";
     }
     var firstName = user['firstName'];
-    document.getElementById('teacherName').innerHTML = firstName;
+    var lastName = user['lastName'];
+    document.getElementById('teacherName').innerHTML = firstName + " " + lastName;
   </script>
 
 </html>

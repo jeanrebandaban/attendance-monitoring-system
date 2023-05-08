@@ -17,7 +17,12 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- JS -->
-    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <script type="text/javascript" src="firebaseInit.js"></script>
+
+    <script src="qrScript.js"></script>
+    <script type="text/javascript" src="attendance.js"></script>
 </head>
 
 <body>
@@ -44,7 +49,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-4 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="registration.html">Login</a>
+                        <a class="nav-link" onclick="myFunction()">Login</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -69,8 +74,10 @@
             </div>
         </div>
         <div class="row index_row  justify-content-center">
-
-            <div class="box"></div>
+            <div class="qrContainer" style="text-align: center;">
+                <div id="reader" style="width: 500px;"></div>
+                <div id="show" style="display: none;"></div>
+            </div>
         </div>
         <div class="row justify-content-center" style="background-color: rgb(255, 255, 255)" id="table">
             <div class="results">
@@ -129,10 +136,12 @@
                     <input class="form-control width-100" id="status" type="text" value=""
                         aria-label="readonly input example" readonly />
                 </div>
-                <p></p>
+                <p id="status-success" class="hide"></p>
+                <p id="status-error" class="hide"></p>
             </div>
         </div>
         <div class="" style="width: 70%; background-color: white;">
+
             <!-- Input Text -->
             <div class="input">
                 <div class="studNum">
@@ -141,25 +150,83 @@
                 <form>
                     <div class="row">
                         <div class="col-md-6">
-                            <input class="form-control" style="font-size: larger;" id="status" type="text" value=""
+                            <input class="form-control" style="font-size: larger;" id="studNum" type="text" value=""
                                 aria-label="readonly input example" />
                         </div>
                         <div class="col-md-6" style="display:flex">
-                            <button type="button" class="btn btn-dark">Submit</button>
+                            <button type="button" class="btn btn-dark" id="submit"
+                                onclick="manualSubmit()">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-
-
-
-
     <!-- Footer -->
     <footer class="footer mt-auto py-3">
     </footer>
+    <script>
+        const html5Qrcode = new Html5Qrcode('reader');
+
+        const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+            if (decodedText) {
+                document.getElementById("studentNumber").value = decodedText;
+                onSubmit();
+                html5Qrcode.stop();
+
+                setTimeout(() => {
+                    html5Qrcode.start(
+                        { facingMode: "environment" },
+                        { fps: 10, qrbox: 250 },
+                        qrCodeSuccessCallback,
+                        qrCodeErrorCallback
+                    );
+                }, 1000);
+            }
+        }
+
+        const qrCodeErrorCallback = (errorMessage) => {
+            if (!errorMessage.startsWith("QR code parse error")) {
+                console.error(errorMessage);
+            }
+        };
+
+        html5Qrcode.start(
+            { facingMode: "environment" },
+            { fps: 10, qrbox: 250 },
+            qrCodeSuccessCallback,
+            qrCodeErrorCallback
+        );
+        var time;
+        function updateClock() {
+            let now = new Date();
+            let day = now.toLocaleDateString("en-US", { weekday: "long" });
+            let date = now.toLocaleDateString();
+            time = now.toLocaleTimeString();
+            let clock = document.getElementById("clock");
+            if (clock) {
+                clock.innerText = time;
+            }
+            let dateElement = document.getElementById("date");
+            if (dateElement) {
+                dateElement.innerText = `${day}, ${date}`;
+            }
+        }
+
+        setInterval(updateClock, 1000);
+
+        var input = document.getElementById("studNum");
+        input.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("submit").click();
+            }
+        });
+
+        function myFunction() {
+            window.open("registration.html");
+        }
+    </script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
 </body>

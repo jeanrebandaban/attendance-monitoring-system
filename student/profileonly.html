@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Student Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
@@ -154,7 +154,7 @@
       <li class="nav-item">
       </li>
       <li class="nav-item">
-        <a href="profileonly.html" class="nav-link text-dark font-italic bg-light">
+        <a href="profileonly.html" class="nav-link text-dark bg-light">
           <i class="fa fa-users mr-3 text-primary fa-fw"></i>
           Profile
         </a>
@@ -169,6 +169,12 @@
         <a href="attendance.html" class="nav-link text-dark font-italic">
           <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
           Attendance Record
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="qr-generator.html" class="nav-link text-dark font-italic">
+          <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
+          QR Code
         </a>
       </li>
       <li class="nav-item">
@@ -293,7 +299,7 @@
     var program = user['program'];
     // var uid = user['uid'];
 
-    document.getElementById('studName').innerHTML = firstName;
+    document.getElementById('studName').innerHTML = firstName + " " + lastName;
     document.getElementById('studentName').innerHTML = firstName + " " + lastName;
     // document.getElementById('studentId').innerHTML = uid;
     document.getElementById("sname").placeholder = lastName;

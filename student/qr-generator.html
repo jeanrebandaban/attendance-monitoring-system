@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teacher Dashboard</title>
+  <title>Student Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
@@ -60,15 +60,6 @@
       }
     }
 
-    .logo {
-      display: block;
-      margin-left: 32%;
-      margin-right: 25%;
-      width: 50%;
-      align-items: end;
-      padding-top: 80%;
-    }
-
     /*
 *
 * ==========================================
@@ -76,6 +67,16 @@
 * ==========================================
 *
 */
+
+    .button {
+      width: 150px;
+      height: 35px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
 
     body {
       background: #599fd9;
@@ -98,6 +99,64 @@
     .text-gray {
       color: #aaa;
     }
+
+    .pass_show {
+      position: relative
+    }
+
+    .pass_show .ptxt {
+
+      position: absolute;
+
+      top: 50%;
+
+      right: 10px;
+
+      z-index: 1;
+
+      color: #f36c01;
+
+      margin-top: -10px;
+
+      cursor: pointer;
+
+      transition: .3s ease all;
+
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 50px;
+    }
+
+    .pass_show .ptxt:hover {
+      color: #333333;
+    }
+
+    .logo {
+      display: block;
+      margin-left: 32%;
+      margin-right: 25%;
+      width: 50%;
+      align-items: end;
+      padding-top: 80%;
+    }
+
+    #qrcode-container {
+      display: none;
+    }
+
+    .qrcode {
+      padding: 16px;
+      margin-bottom: 30px;
+    }
+
+    .qrcode img {
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(67, 67, 68, 0.25);
+      padding: 4px;
+    }
   </style>
 </head>
 
@@ -107,8 +166,8 @@
       <div class="media d-flex align-items-center"><img src="profile.png" alt="..." width="65"
           class="mr-3 rounded-circle img-thumbnail shadow-sm">
         <div class="media-body">
-          <h4 class="m-0" id="teacherName">Jason Doe</h4>
-          <p class="font-weight-light text-muted mb-0">Teacher</p>
+          <h4 class="m-0" id="studName">Jason Doe</h4>
+          <p class="font-weight-light text-muted mb-0">Student</p>
         </div>
       </div>
     </div>
@@ -117,35 +176,29 @@
 
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
-        <a href="profile.html" class="nav-link text-dark font-italic">
-          <i class="fa fa-home mr-3 text-primary fa-fw"></i>
-          Home
-        </a>
-      </li>
-      <li class="nav-item">
         <a href="profileonly.html" class="nav-link text-dark font-italic">
           <i class="fa fa-users mr-3 text-primary fa-fw"></i>
           Profile
         </a>
       </li>
       <li class="nav-item">
-        <a href="password.html" class="nav-link text-dark font-italic">
+        <a href="password.html" class="nav-link text-dark bg-light">
           <i class="fa fa-unlock-alt mr-3 text-primary fa-fw"></i>
           Password
         </a>
       </li>
       <li class="nav-item">
-        <a href="attendance.html" class="nav-link text-dark font-italic bg-light">
+        <a href="attendance.html" class="nav-link text-dark font-italic">
           <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
           Attendance Record
         </a>
       </li>
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <a href="qr-generator.html" class="nav-link text-dark font-italic">
           <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
           QR Code
         </a>
-      </li> -->
+      </li>
       <li class="nav-item">
         <a class="nav-link text-danger font-italic" id="logout-link">
           <i class="fa fa-sign-out mr-3 text-primary fa-fw"></i>
@@ -156,6 +209,8 @@
 
     <div class="logo"><img src="qa_logo.png" alt="..." class="center" width="100">
     </div>
+
+
   </div>
   <!-- End vertical navbar -->
 
@@ -165,27 +220,68 @@
     <!-- Toggle button -->
     <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
         class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Navigation</small></button>
+    <form>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="container">
+              <h1 style="padding-bottom: 30px;">QR Code</h1>
 
 
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-  <script src="javascript.js"></script>
+              <div class="form-group">
+                <input type="url" value="" id="website" name="website" class="form-control" placeholder="user id"
+                  readonly>
+              </div>
+              <div class="form-group">
+                <div id="qrcode-container">
+                  <div id="qrcode" class="qrcode"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
-  <!-- JS -->
-  <script type="text/javascript" src="../firebaseInit.js"></script>
-  <script type="text/javascript" src="../authentication.js"></script>
-  <script>
-    var user = getLoggedInUser();
-    if (user == null || user["appType"] != "teacher") {
-      alert("You must login to access this page.");
-      window.location.href = "../registration.html";
-    }
-    var firstName = user['firstName'];
-    var lastName = user['lastName'];
-    document.getElementById('teacherName').innerHTML = firstName + " " + lastName;
-  </script>
+
+      </div>
+    </form>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="javascript.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+    <!-- JS -->
+    <script type="text/javascript" src="../firebaseInit.js"></script>
+    <script type="text/javascript" src="../authentication.js"></script>
+    <script>
+
+      var user = getLoggedInUser();
+      if (user == null || user["appType"] != "student") {
+        alert("You must login to access this page.");
+        window.location.href = "../registration.html";
+      }
+      var firstName = user['firstName'];
+      var lastName = user['lastName'];
+      var uid = user['userId'];
+      document.getElementById('studName').innerHTML = firstName + " " + lastName;
+      document.getElementById('website').value = uid;
+      generateQRCode();
+
+      function generateQRCode() {
+        let website = document.getElementById("website").value;
+        if (website) {
+          let qrcodeContainer = document.getElementById("qrcode");
+          qrcodeContainer.innerHTML = "";
+          new QRCode(qrcodeContainer, website);
+
+          document.getElementById("qrcode-container").style.display = "block";
+        } else {
+          alert("Please enter a valid URL");
+        }
+      }
+    </script>
 
 </html>

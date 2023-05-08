@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Admin Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
@@ -35,31 +35,6 @@
         <a href="adminTable.html" class="nav-link text-dark font-italic bg-light">
           <i class="fa fa-users mr-3 text-primary fa-fw"></i>
           Admin Table
-        </a>
-      </li>
-      <!-- <li class="nav-item">
-              <a href="admin.html" class="nav-link text-dark">
-                        <i class="fa fa-users mr-3 text-primary fa-fw"></i>
-                        Admin Profile
-                    </a>
-            </li> -->
-
-      <!-- <li class="nav-item">
-        <a href="password.html" class="nav-link text-dark">
-          <i class="fa fa-unlock-alt mr-3 text-primary fa-fw"></i>
-          Edit Password
-        </a>
-      </li> -->
-      <li class="nav-item">
-        <a href="attendance.html" class="nav-link text-dark">
-          <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
-          Attendance Record
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="files.html" class="nav-link text-dark">
-          <i class="fa fa-list-alt mr-3 text-primary fa-fw"></i>
-          Files
         </a>
       </li>
       <li class="nav-item">
@@ -125,7 +100,7 @@
         <div class="modal-content">
           <form>
             <div class="modal-header">
-              <h4 class="modal-title">Edit Student</h4>
+              <h4 class="modal-title">Edit Teacher</h4>
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
@@ -133,6 +108,7 @@
                 <label class="form-label" for="user-type" id="activeRadio">Active: &nbsp;&nbsp;
                   <input type="radio" name="access" value="true" required>&nbsp;True&nbsp;&nbsp;
                   <input type="radio" name="access" value="false" checked required>&nbsp;False</label>
+                  <input type="hidden" id="modaluid" />
               </div>
 
               <div class="form-group">
@@ -141,7 +117,7 @@
               </div>
               <div class="modal-footer">
                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                <input type="submit" class="btn btn-info" id="' + row['uid'] + '" onsubmit="editUser()" value="Save">
+                <input type="submit" class="btn btn-info" id="' + row['uid'] + '" onclick="editUser()" value="Save">
               </div>
           </form>
         </div>
@@ -183,28 +159,36 @@
     }
     function showModal() {
       var uid = event.target.id;
-        console.log(uid);
-      $('#editEmployeeModal').modal('show');
-      document.getElementById("editEmployeeModal").addEventListener("submit", editUser);
-      function editUser(e) {
-        e.preventDefault();
-        var userToEditRef = firebase.database().ref("registrationForm/" + uid);
-        var active = document.querySelector('input[name="access"]:checked').value;
-        var empNo = document.getElementById('empNo').value;
+      console.log(uid);
+      var userToEditRef = firebase.database().ref("registrationForm/" + uid);
+      userToEditRef.once('value', (snapshot) => {
+        var user = snapshot.val();
+        document.getElementById("empNo").value = user["empNo"] ?? "";
+        document.getElementById("modaluid").value = uid;
+      })
 
-        userToEditRef.update({
-          active: active,
-          empNo: empNo,
-        }).then(() => {
-          alert("User updated successfully!");
-          location.reload();
-          console.log("success");  
-          location.reload();
-        }).catch(() => {
-          alert("failed");
-        })
-      }
+      $('#editEmployeeModal').modal('show');
     }
+
+    function editUser() {
+      var uid = document.getElementById('modaluid').value;
+      var userToEditRef = firebase.database().ref("registrationForm/" + uid);
+      var active = document.querySelector('input[name="access"]:checked').value;
+      var empNo = document.getElementById('empNo').value;
+
+      userToEditRef.update({
+        active: active,
+        empNo: empNo,
+      }).then(() => {
+        alert("User updated successfully!");
+        location.reload();
+        console.log("success");
+        location.reload();
+      }).catch(() => {
+        alert("failed");
+      })
+    }
+
     populateTable();
     function populateTable() {
       var data = [];
